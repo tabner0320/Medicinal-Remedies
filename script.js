@@ -1,19 +1,30 @@
 function showRemedy(symptom) {
-  let result = "";
+  const remedies = {
+    "Headache": {
+      text: "Try Ginger tea or Turmeric for anti-inflammatory effects.",
+      image: "images/ginger.jpg"
+    },
+    "Cold": {
+      text: "Elderberry syrup and Mullein tea can help relieve symptoms.",
+      image: "images/elderberry.jpg"
+    },
+    "Digestive Issues": {
+      text: "Ginger and Turmeric are excellent for digestion support.",
+      image: "images/turmeric.jpg"
+    }
+  };
 
-  switch (symptom) {
-    case "Headache":
-      result = "Try peppermint tea or ginger for relief.";
-      break;
-    case "Cold":
-      result = "Elderberry syrup and ginger tea can help ease cold symptoms.";
-      break;
-    case "Digestive Issues":
-      result = "Ginger and chamomile tea are great for digestion.";
-      break;
-    default:
-      result = "No remedies found.";
+  const resultElement = document.getElementById("remedyResult");
+
+  if (remedies[symptom]) {
+    resultElement.innerHTML = `
+      <p>${remedies[symptom].text}</p>
+      <img src="${remedies[symptom].image}" 
+           alt="${symptom} remedy" 
+           style="max-width:200px; margin-top:10px;" />
+    `;
+  } else {
+    resultElement.innerHTML = "<p>No remedy found.</p>";
   }
-
-  document.getElementById("remedyResult").textContent = result;
 }
+
