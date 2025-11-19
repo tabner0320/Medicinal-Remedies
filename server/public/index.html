@@ -5,10 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Medicinal Remedies</title>
   <link rel="stylesheet" href="style.css" />
+
 </head>
 <body>
   <header>
-    <h1>Natural Medicinal Remedies</h1>
+       <h1>Natural Medicinal Remedies</h1>
+    <button id="loadRemedies">Show All Remedies</button>
+
+    <div id="remedy-container" class="remedy-container"></div>
+
     <nav>
       <a href="#herbs">Herbs</a>
       <a href="#symptoms">Symptoms</a>
@@ -39,13 +44,13 @@
       <p id="remedyResult"></p>
     </section>
 
-    <!-- Digestive Remedies Section -->
-    <section id="digestive-remedies" class="remedy-section">
-      <h2>Natural Remedies for Digestive Issues</h2>
-      <p class="intro-text">
-        Digestive issues like bloating, gas, and indigestion can often be relieved naturally with herbs that support healthy digestion.
-        Below are some effective remedies and lifestyle tips.
-      </p>
+    <!-- This section is shown only for Digestive Issues -->
+    <section id="digestive-info" class="hidden">
+      <h2>Digestive Remedies</h2>
+      <p><strong>Ginger:</strong> Known for reducing nausea, improving digestion, and soothing the stomach.</p>
+      <p><strong>Turmeric:</strong> Contains curcumin, which helps reduce inflammation and supports gut health.</p>
+      <p>These remedies are commonly used for digestive discomfort, bloating, or indigestion.</p>
+    </section>
 
       <article class="remedy-category">
         <h3>Carminative Herbs (Reduce Gas & Bloating)</h3>
@@ -120,6 +125,8 @@
   </main>
 
   <footer>
+
+  </footer>
     
     <script src="script.js"></script>
 </body>

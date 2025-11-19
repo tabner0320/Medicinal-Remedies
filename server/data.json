@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "Ginger",
+    "description": "Reduces nausea and supports healthy digestion.",
+    "type": "Digestive",
+    "years_used": 2000
+  },
+  {
+    "id": 2,
+    "name": "Turmeric",
+    "description": "Anti-inflammatory and supports joint and gut health.",
+    "type": "Anti-inflammatory",
+    "years_used": 4000
+  }
+]
+

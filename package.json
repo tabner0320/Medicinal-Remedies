@@ -1,0 +1,26 @@
+{
+  "name": "medicinal-remedies",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tabner0320/Medicinal-Remedies.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tabner0320/Medicinal-Remedies/issues"
+  },
+  "homepage": "https://github.com/tabner0320/Medicinal-Remedies#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
+}
+
