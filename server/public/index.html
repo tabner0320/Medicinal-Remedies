@@ -5,15 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Medicinal Remedies</title>
   <link rel="stylesheet" href="style.css" />
-
 </head>
+
 <body>
+  <!-- HEADER -->
   <header>
-       <h1>Natural Medicinal Remedies</h1>
-    <button id="loadRemedies">Show All Remedies</button>
-
-    <div id="remedy-container" class="remedy-container"></div>
-
+    <h1>Natural Medicinal Remedies</h1>
     <nav>
       <a href="#herbs">Herbs</a>
       <a href="#symptoms">Symptoms</a>
@@ -23,6 +20,24 @@
   </header>
 
   <main>
+    <!-- Remedy Controls -->
+    <section id="remedy-controls">
+      <button id="loadRemedies">Show All Remedies</button>
+      <div id="remedy-container" class="remedy-container"></div>
+    </section>
+
+    <!-- Add a New Remedy -->
+    <section id="add-remedy">
+      <h2>Add a New Remedy</h2>
+      <form id="remedyForm" autocomplete="off">
+        <input type="text" id="name" placeholder="Name" required /><br />
+        <input type="text" id="type" placeholder="Type" required /><br />
+        <textarea id="description" placeholder="Description" required></textarea><br />
+        <input type="number" id="years" placeholder="Years Used" min="0" required /><br />
+        <button type="submit">Add Remedy</button>
+      </form>
+    </section>
+
     <!-- Herbs Section -->
     <section id="herbs">
       <h2>Herbal Remedies</h2>
@@ -44,7 +59,7 @@
       <p id="remedyResult"></p>
     </section>
 
-    <!-- This section is shown only for Digestive Issues -->
+    <!-- Digestive Info -->
     <section id="digestive-info" class="hidden">
       <h2>Digestive Remedies</h2>
       <p><strong>Ginger:</strong> Known for reducing nausea, improving digestion, and soothing the stomach.</p>
@@ -52,63 +67,25 @@
       <p>These remedies are commonly used for digestive discomfort, bloating, or indigestion.</p>
     </section>
 
+    <!-- Digestive Remedies -->
+    <section id="digestive-remedies">
       <article class="remedy-category">
         <h3>Carminative Herbs (Reduce Gas & Bloating)</h3>
         <ul>
-          <li><strong>Peppermint</strong> — Eases IBS, gas, and nausea. Try it as a tea or enteric-coated capsule.</li>
-          <li><strong>Fennel</strong> — Reduces gas and cramps. Chew seeds or make tea after meals.</li>
-          <li><strong>Ginger</strong> — Stimulates digestion and reduces nausea. Use fresh slices in hot water.</li>
-          <li><strong>Chamomile</strong> — Calms the stomach and reduces inflammation. Great as bedtime tea.</li>
+          <li><strong>Peppermint</strong> — Eases IBS, gas, and nausea.</li>
+          <li><strong>Fennel</strong> — Reduces gas and cramps.</li>
+          <li><strong>Ginger</strong> — Stimulates digestion.</li>
+          <li><strong>Chamomile</strong> — Calms the stomach.</li>
         </ul>
       </article>
-
       <article class="remedy-category">
         <h3>Bitter Herbs (Stimulate Digestion & Bile)</h3>
         <ul>
-          <li><strong>Dandelion Root</strong> — Encourages bile flow and supports liver detox.</li>
-          <li><strong>Gentian Root</strong> — A powerful digestive bitter that boosts enzyme production.</li>
-          <li><strong>Artichoke Leaf</strong> — Aids fat digestion and may ease reflux symptoms.</li>
+          <li><strong>Dandelion Root</strong> — Encourages bile flow.</li>
+          <li><strong>Gentian Root</strong> — Boosts enzyme production.</li>
+          <li><strong>Artichoke Leaf</strong> — Aids fat digestion.</li>
         </ul>
-        <p class="tip">💡 Take bitters about 10–15 minutes before eating to enhance digestion.</p>
-      </article>
-
-      <article class="remedy-category">
-        <h3>Demulcent Herbs (Soothe & Protect the Gut)</h3>
-        <ul>
-          <li><strong>Slippery Elm</strong> — Coats and soothes the stomach lining; ideal for acid reflux.</li>
-          <li><strong>Marshmallow Root</strong> — Reduces inflammation in the intestines.</li>
-          <li><strong>Licorice Root (DGL)</strong> — Helps heal ulcers and protects the gut lining.</li>
-        </ul>
-      </article>
-
-      <article class="remedy-category">
-        <h3>Antimicrobial & Gut-Balancing Herbs</h3>
-        <ul>
-          <li><strong>Oregano</strong> — Helps balance gut bacteria; use diluted oil capsules.</li>
-          <li><strong>Garlic</strong> — Fights harmful bacteria while feeding healthy gut flora.</li>
-          <li><strong>Thyme</strong> — Supports digestion and has mild antimicrobial properties.</li>
-        </ul>
-      </article>
-
-      <article class="remedy-category">
-        <h3>Simple Digestive Tea Blend</h3>
-        <p>Combine the following and steep for 10 minutes after meals:</p>
-        <ul>
-          <li>1 part Peppermint</li>
-          <li>1 part Chamomile</li>
-          <li>1 part Fennel seed</li>
-          <li>½ part Ginger root</li>
-        </ul>
-      </article>
-
-      <article class="remedy-category">
-        <h3>Daily Routine for Better Digestion</h3>
-        <ul>
-          <li>Start your day with warm lemon water to activate digestion.</li>
-          <li>Take a small dose of bitters before meals.</li>
-          <li>After meals, sip a calming tea like fennel or chamomile.</li>
-          <li>End the day with a gentle walk or breathing exercise.</li>
-        </ul>
+        <p class="tip">💡 Take bitters about 10–15 minutes before eating.</p>
       </article>
     </section>
 
@@ -125,10 +102,11 @@
   </main>
 
   <footer>
-
+   
   </footer>
-    
-    <script src="script.js"></script>
+
+  <script src="script.js"></script>
 </body>
 </html>
+
 

@@ -28,20 +28,24 @@ function showRemedy(symptom) {
   }
 }
 
+window.showRemedy = showRemedy;
+
 
 // Fetch remedies from API
 async function fetchRemedies() {
   try {
-    const response = await fetch("http://localhost:3000/api/remedies");
-    
-    if (!response.ok) {
-      throw new Error("Failed to load remedies");
-    }
+    console.log("Fetching remedies…");
+    const response = await fetch("/api/remedies"); // use relative URL
+    if (!response.ok) throw new Error("Failed to load remedies");
 
     const remedies = await response.json();
+    console.log("Fetched remedies:", remedies);
     displayRemedies(remedies);
   } catch (error) {
     console.error("Error:", error);
+    const container = document.getElementById("remedy-container");
+    container.classList.add("visible");
+    container.innerHTML = `<p style="color:#b00020;">${error.message}</p>`;
   }
 }
 
@@ -53,11 +57,11 @@ document.getElementById("remedyForm").addEventListener("submit", async (e) => {
     name: document.getElementById("name").value,
     description: document.getElementById("description").value,
     type: document.getElementById("type").value,
-    years_used: parseInt(document.getElementById("years").value),
+    years_used: parseInt(document.getElementById("years").value, 10),
   };
 
   try {
-    const response = await fetch("http://localhost:3000/api/remedies", {
+    const response = await fetch("/api/remedies", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newRemedy),
@@ -66,7 +70,7 @@ document.getElementById("remedyForm").addEventListener("submit", async (e) => {
     if (response.ok) {
       alert("New remedy added successfully!");
       document.getElementById("remedyForm").reset();
-      fetchRemedies(); // refresh list
+      await fetchRemedies(); // refresh list
     } else {
       alert("Failed to add remedy.");
     }
@@ -74,6 +78,7 @@ document.getElementById("remedyForm").addEventListener("submit", async (e) => {
     console.error("Error adding remedy:", error);
   }
 });
+
 
 
 // Display remedy cards dynamically
@@ -105,9 +110,11 @@ document.getElementById("loadRemedies").addEventListener("click", async () => {
 
   if (!remediesVisible) {
     await fetchRemedies();
+    container.classList.add("visible");                   // <— show animation
     document.getElementById("loadRemedies").textContent = "Hide Remedies";
     remediesVisible = true;
   } else {
+    container.classList.remove("visible");                // <— hide animation
     container.innerHTML = "";
     document.getElementById("loadRemedies").textContent = "Show All Remedies";
     remediesVisible = false;

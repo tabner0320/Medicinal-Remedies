@@ -1,3 +1,8 @@
+/* ===== Global Styles ===== */
+html {
+  scroll-behavior: smooth;
+}
+
 /* Reset / Base Styles */
 * {
   margin: 0;
@@ -23,6 +28,50 @@ header h1 {
   margin-bottom: 10px;
   color: #006400;
 }
+/* ===== Remedy Container ===== */
+.remedy-container {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  /* start hidden */
+  opacity: 0;
+  transform: translateY(6px);
+  max-height: 0;
+  overflow: hidden;
+
+  /* animate */
+  transition: opacity 0.35s ease, transform 0.35s ease, max-height 0.45s ease;
+}
+
+/* visible state */
+.remedy-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 2000px; /* large enough to fit your content */
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .remedy-container {
+    transition: none;
+  }
+}
+
+/* ===== Remedy Card Animation ===== */
+.remedy-card {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.remedy-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 nav a {
   margin: 0 10px;
@@ -71,6 +120,46 @@ form input, form textarea {
 form button {
   width: 100%;
   margin-top: 10px;
+}
+
+/* Slide-in for the Add Remedy panel */
+#add-remedy {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+#add-remedy.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #add-remedy {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* Card hover accent */
+.remedy-card:hover,
+.remedy-card:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Make links or buttons inside cards keyboard-friendly */
+.remedy-card a,
+.remedy-card button {
+  outline: none;
+}
+
+.remedy-card a:focus,
+.remedy-card button:focus {
+  outline: 2px solid #228B22;
+  outline-offset: 2px;
+  border-radius: 6px;
 }
 
 /* Footer */
@@ -132,10 +221,14 @@ footer {
   color: #555;
   margin-top: 0.5rem;
 }
-/* Digestive Images Section */
+/* Digestive section + images */
 .digestive-section {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   text-align: center;
+  background-color: #f8f9f9;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .digestive-images {
@@ -155,8 +248,8 @@ footer {
 .digestive-images img {
   width: 100%;
   height: auto;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;         /* choose 12px or 10px and stick with it */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease;
 }
 
@@ -168,61 +261,5 @@ footer {
   margin-top: 0.5rem;
   font-size: 0.9rem;
   color: #333;
-}
-
-/* Hide and show effect */
-.hidden {
-  display: none;
-}
-
-.fade-in {
-  display: block;
-  animation: fadeIn 0.8s ease-in forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-/* Digestive section styling */
-.digestive-section {
-  margin-top: 1.5rem;
-  text-align: center;
-  background-color: #f8f9f9;
-  border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.digestive-images {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-top: 1rem;
-}
-
-.digestive-images figure {
-  text-align: center;
-  max-width: 180px;
-}
-
-.digestive-images img {
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease;
-}
-
-.digestive-images img:hover {
-  transform: scale(1.05);
-}
-
-.digestive-images figcaption {
-  margin-top: 0.4rem;
-  color: #444;
-  font-size: 0.9rem;
 }
 
