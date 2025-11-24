@@ -45,28 +45,76 @@ async function fetchRemedies() {
   }
 }
 
+// Handle form submission to POST new remedy
+document.getElementById("remedyForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const newRemedy = {
+    name: document.getElementById("name").value,
+    description: document.getElementById("description").value,
+    type: document.getElementById("type").value,
+    years_used: parseInt(document.getElementById("years").value),
+  };
+
+  try {
+    const response = await fetch("http://localhost:3000/api/remedies", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newRemedy),
+    });
+
+    if (response.ok) {
+      alert("New remedy added successfully!");
+      document.getElementById("remedyForm").reset();
+      fetchRemedies(); // refresh list
+    } else {
+      alert("Failed to add remedy.");
+    }
+  } catch (error) {
+    console.error("Error adding remedy:", error);
+  }
+});
+
+
 // Display remedy cards dynamically
 function displayRemedies(remedies) {
   const container = document.getElementById("remedy-container");
   container.innerHTML = ""; // Clear old content
 
   remedies.forEach(remedy => {
-    const card = document.createElement("div");
-    card.classList.add("remedy-card");
+  const card = document.createElement("div");
+  card.classList.add("remedy-card");
+  card.innerHTML = `
+    <h2>${remedy.name}</h2>
+    <p><strong>Description:</strong> ${remedy.description}</p>
+    <p><strong>Type:</strong> ${remedy.type}</p>
+    <p><strong>Years Used:</strong> ${remedy.years_used} years</p>
+  `;
+  container.appendChild(card);
 
-    card.innerHTML = `
-      <h2>${remedy.name}</h2>
-      <p><strong>Description:</strong> ${remedy.description}</p>
-      <p><strong>Type:</strong> ${remedy.type}</p>
-      <p><strong>Years Used:</strong> ${remedy.years_used} years</p>
-    `;
+  // Fade-in animation
+  requestAnimationFrame(() => card.classList.add("show"));
+});
 
-    container.appendChild(card);
-  });
 }
 
-// Button to Load Remedies from API
-document.getElementById("loadRemedies").addEventListener("click", fetchRemedies);
+let remediesVisible = false;
+
+document.getElementById("loadRemedies").addEventListener("click", async () => {
+  const container = document.getElementById("remedy-container");
+
+  if (!remediesVisible) {
+    await fetchRemedies();
+    document.getElementById("loadRemedies").textContent = "Hide Remedies";
+    remediesVisible = true;
+  } else {
+    container.innerHTML = "";
+    document.getElementById("loadRemedies").textContent = "Show All Remedies";
+    remediesVisible = false;
+  }
+});
+
+
 
 
 
