@@ -4,32 +4,29 @@ function showRemedy(symptom) {
   const remedyResult = document.getElementById("remedyResult");
   const digestiveInfo = document.getElementById("digestive-info");
 
-  // Reset animation each time
   digestiveInfo.classList.remove("fade-in");
-
-  // Hide the digestive section by default
   digestiveInfo.classList.add("hidden");
 
-  // Display result text
   if (symptom === "Headache") {
     remedyResult.textContent = "Try peppermint or lavender for headache relief.";
-
   } else if (symptom === "Cold") {
     remedyResult.textContent = "Elderberry, echinacea, and ginger are great for colds.";
-
   } else if (symptom === "Digestive Issues") {
     remedyResult.textContent = "";
-
-    digestiveInfo.classList.remove("hidden"); // Show section
-    digestiveInfo.classList.add("fade-in");   // Add fade-in animation
-
+    digestiveInfo.classList.remove("hidden");
+    digestiveInfo.classList.add("fade-in");
   } else {
     remedyResult.textContent = "";
   }
 }
 
-window.showRemedy = showRemedy;
-
+// Listen for any symptom button clicks
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest(".symptom-btn");
+  if (!btn) return;
+  const symptom = btn.dataset.symptom;
+  showRemedy(symptom);
+});
 
 // Fetch remedies from API
 async function fetchRemedies() {

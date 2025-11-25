@@ -1,4 +1,18 @@
 /* ===== Global Styles ===== */
+
+/* Animation + visibility utilities */
+.hidden { display: none; }
+
+.fade-in {
+  animation: fadeIn .35s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ===== Global Styles ===== */
 html {
   scroll-behavior: smooth;
 }

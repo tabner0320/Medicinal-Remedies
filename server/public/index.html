@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Medicinal Remedies</title>
-  <link rel="stylesheet" href="style.css" />
+ <link rel="stylesheet" href="/style.css" />
 </head>
 
 <body>
@@ -19,7 +19,7 @@
     </nav>
   </header>
 
- <img src="/images/profile.jpg" alt="Theo Abner" id="profile-pic">
+ <img src="/images/profile.jpg" alt="Theo Abner" class="profile-pic">
 
   <main>
     <!-- Remedy Controls -->
@@ -53,13 +53,16 @@
 
     <!-- Symptoms Section -->
     <section id="symptoms">
-      <h2>Common Symptoms</h2>
-      <p>Click a symptom to see suggested natural remedies:</p>
-      <button onclick="showRemedy('Headache')">Headache</button>
-      <button onclick="showRemedy('Cold')">Cold</button>
-      <button onclick="showRemedy('Digestive Issues')">Digestive Issues</button>
-      <p id="remedyResult"></p>
-    </section>
+  <h2>Common Symptoms</h2>
+  <p>Click a symptom to see suggested natural remedies:</p>
+
+  <button class="symptom-btn" data-symptom="Headache">Headache</button>
+  <button class="symptom-btn" data-symptom="Cold">Cold</button>
+  <button class="symptom-btn" data-symptom="Digestive Issues">Digestive Issues</button>
+
+  <!-- Where text results appear -->
+  <p id="remedyResult"></p>
+  </section>
 
     <!-- Digestive Info -->
     <section id="digestive-info" class="hidden">
@@ -107,7 +110,7 @@
    
   </footer>
 
-  <script src="script.js"></script>
+  <script src="/script.js" defer></script>
 </body>
 </html>
 
