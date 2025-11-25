@@ -9,7 +9,7 @@ const PORT = 3000;
 app.use(cors());
 app.use(express.json());
 
-// ✅ NEW: serve files from the "public" folder
+// ✅ NEW: serve static files from the "public" folder
 app.use(express.static(path.join(__dirname, "public")));
 
 

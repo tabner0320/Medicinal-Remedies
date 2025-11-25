@@ -24,10 +24,24 @@ header {
   margin-bottom: 20px;
 }
 
+/* Header Title */
 header h1 {
   margin-bottom: 10px;
   color: #006400;
 }
+
+/* Profile Picture Styling */
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: block;
+  margin: 10px auto;
+  margin-bottom: 20px; /* ✅ Add this line */
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
 /* ===== Remedy Container ===== */
 .remedy-container {
   background-color: #f9f9f9;
