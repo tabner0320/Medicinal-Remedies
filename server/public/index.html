@@ -22,34 +22,47 @@
  <img src="/images/profile.jpg" alt="Theo Abner" class="profile-pic">
 
   <main>
-    <!-- Remedy Controls -->
-    <section id="remedy-controls">
-      <button id="loadRemedies">Show All Remedies</button>
-      <div id="remedy-container" class="remedy-container"></div>
-    </section>
+   <!-- Remedy Controls -->
+<section id="remedy-controls">
+  <button id="loadRemedies">Show All Remedies</button>
+  <div id="remedy-container" class="remedy-container"></div>
+</section>
 
-    <!-- Add a New Remedy -->
-    <section id="add-remedy">
-      <h2>Add a New Remedy</h2>
-      <form id="remedyForm" autocomplete="off">
-        <input type="text" id="name" placeholder="Name" required /><br />
-        <input type="text" id="type" placeholder="Type" required /><br />
-        <textarea id="description" placeholder="Description" required></textarea><br />
-        <input type="number" id="years" placeholder="Years Used" min="0" required /><br />
-        <button type="submit">Add Remedy</button>
-      </form>
-    </section>
+<!-- Add a New Remedy -->
+<section id="add-remedy">
+  <h2>Add a New Remedy</h2>
+  <form id="remedyForm" autocomplete="off">
+    <input type="text" id="name" placeholder="Name" required /><br />
+    <input type="text" id="type" placeholder="Type" required /><br />
+    <textarea id="description" placeholder="Description" required></textarea><br />
+    <input type="number" id="years" placeholder="Years Used" min="0" required /><br />
+    <button type="submit">Add Remedy</button>
+  </form>
+</section>
 
-    <!-- Herbs Section -->
-    <section id="herbs">
-      <h2>Herbal Remedies</h2>
-      <ul>
-        <li><strong>Turmeric:</strong> Anti-inflammatory and antioxidant properties.</li>
-        <li><strong>Ginger:</strong> Helps with digestion and nausea.</li>
-        <li><strong>Mullein:</strong> Helps with respiratory issues.</li>
-        <li><strong>Elderberry:</strong> Boosts immune system, helps with cold & flu symptoms.</li>
-      </ul>
-    </section>
+<!-- Usage Stats Section -->
+<section id="stats">
+  <h2 style="display:flex;justify-content:space-between;align-items:center;">
+    <span>Usage Stats</span>
+    <button id="refreshStats" type="button">Refresh Stats</button>
+  </h2>
+
+  <div id="stats-cards"></div>
+  <canvas id="symptomChart" width="400" height="220"></canvas>
+</section>
+
+
+<!-- Herbs Section -->
+<section id="herbs">
+  <h2>Herbal Remedies</h2>
+  <ul>
+    <li><strong>Turmeric:</strong> Anti-inflammatory and antioxidant properties.</li>
+    <li><strong>Ginger:</strong> Helps with digestion and nausea.</li>
+    <li><strong>Mullein:</strong> Helps with respiratory issues.</li>
+    <li><strong>Elderberry:</strong> Boosts immune system, helps with cold & flu symptoms.</li>
+  </ul>
+</section>
+
 
     <!-- Symptoms Section -->
     <section id="symptoms">
@@ -110,6 +123,7 @@
    
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script src="/script.js" defer></script>
 </body>
 </html>

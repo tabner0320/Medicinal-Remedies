@@ -1,5 +1,7 @@
 
 // Function for showing remedies based on symptom selection
+let symptomChart = null;
+
 function showRemedy(symptom) {
   const remedyResult = document.getElementById("remedyResult");
   const digestiveInfo = document.getElementById("digestive-info");
@@ -26,6 +28,13 @@ document.addEventListener("click", (e) => {
   if (!btn) return;
   const symptom = btn.dataset.symptom;
   showRemedy(symptom);
+
+  // fire-and-forget analytics
+  fetch("/api/track", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ event: "symptom_click", payload: { symptom } })
+  }).catch(() => {});
 });
 
 // Fetch remedies from API
@@ -68,14 +77,25 @@ document.getElementById("remedyForm").addEventListener("submit", async (e) => {
       alert("New remedy added successfully!");
       document.getElementById("remedyForm").reset();
       await fetchRemedies(); // refresh list
+      await loadStats();
+
+
+      // (optional) analytics for remedy added
+      fetch("/api/track", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          event: "remedy_added",
+          payload: { name: newRemedy.name, type: newRemedy.type }
+        })
+      }).catch(() => {});
     } else {
       alert("Failed to add remedy.");
     }
   } catch (error) {
     console.error("Error adding remedy:", error);
   }
-});
-
+}); // <-- properly close the submit handler here
 
 
 // Display remedy cards dynamically
@@ -84,20 +104,19 @@ function displayRemedies(remedies) {
   container.innerHTML = ""; // Clear old content
 
   remedies.forEach(remedy => {
-  const card = document.createElement("div");
-  card.classList.add("remedy-card");
-  card.innerHTML = `
-    <h2>${remedy.name}</h2>
-    <p><strong>Description:</strong> ${remedy.description}</p>
-    <p><strong>Type:</strong> ${remedy.type}</p>
-    <p><strong>Years Used:</strong> ${remedy.years_used} years</p>
-  `;
-  container.appendChild(card);
+    const card = document.createElement("div");
+    card.classList.add("remedy-card");
+    card.innerHTML = `
+      <h2>${remedy.name}</h2>
+      <p><strong>Description:</strong> ${remedy.description}</p>
+      <p><strong>Type:</strong> ${remedy.type}</p>
+      <p><strong>Years Used:</strong> ${remedy.years_used} years</p>
+    `;
+    container.appendChild(card);
 
-  // Fade-in animation
-  requestAnimationFrame(() => card.classList.add("show"));
-});
-
+    // Fade-in animation
+    requestAnimationFrame(() => card.classList.add("show"));
+  });
 }
 
 let remediesVisible = false;
@@ -107,16 +126,71 @@ document.getElementById("loadRemedies").addEventListener("click", async () => {
 
   if (!remediesVisible) {
     await fetchRemedies();
-    container.classList.add("visible");                   // <— show animation
+    container.classList.add("visible"); // show animation
     document.getElementById("loadRemedies").textContent = "Hide Remedies";
     remediesVisible = true;
   } else {
-    container.classList.remove("visible");                // <— hide animation
+    container.classList.remove("visible"); // hide animation
     container.innerHTML = "";
     document.getElementById("loadRemedies").textContent = "Show All Remedies";
     remediesVisible = false;
   }
 });
+
+
+// =============================
+// 📊 Load and display site stats
+// =============================
+async function loadStats() {
+  try {
+    const res = await fetch("/api/stats");
+    const stats = await res.json();
+
+    // Summary cards
+    const cards = document.getElementById("stats-cards");
+    cards.innerHTML = `
+      <div class="remedy-card show"><strong>Total events:</strong> ${stats.totals.events}</div>
+      <div class="remedy-card show"><strong>Symptom clicks:</strong> ${stats.totals.symptomClicks}</div>
+      <div class="remedy-card show"><strong>Remedies added:</strong> ${stats.totals.remedyAdds}</div>
+    `;
+
+    // Chart data
+    const labels = stats.topSymptoms.map(s => s.symptom);
+    const data = stats.topSymptoms.map(s => s.count);
+    const ctx = document.getElementById("symptomChart").getContext("2d");
+
+    if (!symptomChart) {
+      // create once
+      // eslint-disable-next-line no-undef
+      symptomChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels,
+          datasets: [{ label: "Symptom Clicks", data }]
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true, ticks: { precision: 0 } } }
+        },
+      });
+    } else {
+      // update existing chart
+      symptomChart.data.labels = labels;
+      symptomChart.data.datasets[0].data = data;
+      symptomChart.update();
+    }
+  } catch (err) {
+    console.error("Stats error:", err);
+  }
+}
+
+
+// Call when page loads
+document.addEventListener("DOMContentLoaded", loadStats);
+document.getElementById("refreshStats")?.addEventListener("click", loadStats);
+
+
 
 
 

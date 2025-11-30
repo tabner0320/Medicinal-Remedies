@@ -1,0 +1,25 @@
+{
+  "events": [
+    {
+      "event": "symptom_click",
+      "payload": {
+        "symptom": "Headache"
+      },
+      "ts": "2025-11-30T20:58:35.367Z"
+    },
+    {
+      "event": "symptom_click",
+      "payload": {
+        "symptom": "Cold"
+      },
+      "ts": "2025-11-30T20:58:36.096Z"
+    },
+    {
+      "event": "symptom_click",
+      "payload": {
+        "symptom": "Digestive Issues"
+      },
+      "ts": "2025-11-30T20:58:36.845Z"
+    }
+  ]
+}

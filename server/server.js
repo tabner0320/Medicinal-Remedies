@@ -9,9 +9,8 @@ const PORT = 3000;
 app.use(cors());
 app.use(express.json());
 
-// ✅ NEW: serve static files from the "public" folder
+// ✅ Serve static files from the "public" folder
 app.use(express.static(path.join(__dirname, "public")));
-
 
 const dataPath = path.join(__dirname, "data.json");
 
@@ -49,6 +48,75 @@ app.post("/api/remedies", (req, res) => {
   writeData(data);
   res.status(201).json(newRemedy);
 });
+
+
+// === Simple metrics store ===
+const METRICS_PATH = path.join(__dirname, "metrics.json");
+
+function readMetrics() {
+  try {
+    return JSON.parse(fs.readFileSync(METRICS_PATH, "utf8"));
+  } catch {
+    return { events: [] };
+  }
+}
+
+function writeMetrics(data) {
+  fs.writeFileSync(METRICS_PATH, JSON.stringify(data, null, 2));
+}
+
+// Track events (clicks, submissions, pageviews)
+app.post("/api/track", (req, res) => {
+  const { event, payload } = req.body || {};
+  if (!event) return res.status(400).json({ message: "Missing event name" });
+
+  const metrics = readMetrics();
+  metrics.events.push({
+    event,
+    payload: payload || {},
+    ts: new Date().toISOString()
+  });
+  writeMetrics(metrics);
+  res.json({ ok: true });
+});
+
+// Aggregate stats
+app.get("/api/stats", (req, res) => {
+  const { events } = readMetrics();
+
+  const symptomCounts = {};
+  const typeCounts = {};
+
+  for (const e of events) {
+    if (e.event === "symptom_click" && e?.payload?.symptom) {
+      const s = e.payload.symptom;
+      symptomCounts[s] = (symptomCounts[s] || 0) + 1;
+    }
+    if (e.event === "remedy_added" && e?.payload?.type) {
+      const t = e.payload.type;
+      typeCounts[t] = (typeCounts[t] || 0) + 1;
+    }
+  }
+
+  const topSymptoms = Object.entries(symptomCounts)
+    .sort((a, b) => b[1] - a[1])
+    .map(([symptom, count]) => ({ symptom, count }));
+
+  const types = Object.entries(typeCounts)
+    .sort((a, b) => b[1] - a[1])
+    .map(([type, count]) => ({ type, count }));
+
+  res.json({
+    totals: {
+      events: events.length,
+      symptomClicks: Object.values(symptomCounts).reduce((a, b) => a + b, 0),
+      remedyAdds: Object.values(typeCounts).reduce((a, b) => a + b, 0)
+    },
+    topSymptoms,
+    types
+  });
+});
+
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
