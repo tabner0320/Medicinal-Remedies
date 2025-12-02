@@ -43,22 +43,22 @@ Medicinal-Remedies/
 
 2. Navigate to the project directory
 
-gitbash
+   gitbash
 
-cd Medicinal-Remedies
+   cd Medicinal-Remedies
 
 3. Install dependencies
 
-gitbash
+   gitbash
 
-npm install
+   npm install
 
 4. Start the server
 
-gitbash
+   gitbash
 
-node server.js
+   node server.js
 
 5. Open your browser and go to:
 
-http://localhost:3000
+   http://localhost:3000
