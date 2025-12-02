@@ -53,12 +53,12 @@ gitbash
 
 npm install
 
-Start the server
+4. Start the server
 
 gitbash
 
 node server.js
 
-Open your browser and go to:
+5. Open your browser and go to:
 
 http://localhost:3000
