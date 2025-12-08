@@ -4,11 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Medicinal Remedies</title>
- <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/style.css" />
 </head>
 
 <body>
-  <!-- HEADER -->
   <header>
     <h1>Natural Medicinal Remedies</h1>
     <nav>
@@ -19,65 +18,54 @@
     </nav>
   </header>
 
- <img src="/images/profile.jpg" alt="Theo Abner" class="profile-pic">
+  <!-- ✅ Single main that wraps all content -->
+  <main class="container">
+    <img src="/images/profile.jpg" alt="Theo Abner" class="profile-pic" />
 
-  <main>
-   <!-- Remedy Controls -->
-<section id="remedy-controls">
-  <button id="loadRemedies">Show All Remedies</button>
-  <div id="remedy-container" class="remedy-container"></div>
-</section>
+    <section id="remedy-controls">
+      <button id="loadRemedies">Show All Remedies</button>
+      <div id="remedy-container" class="remedy-container"></div>
+    </section>
 
-<!-- Add a New Remedy -->
-<section id="add-remedy">
-  <h2>Add a New Remedy</h2>
-  <form id="remedyForm" autocomplete="off">
-    <input type="text" id="name" placeholder="Name" required /><br />
-    <input type="text" id="type" placeholder="Type" required /><br />
-    <textarea id="description" placeholder="Description" required></textarea><br />
-    <input type="number" id="years" placeholder="Years Used" min="0" required /><br />
-    <button type="submit">Add Remedy</button>
-  </form>
-</section>
+    <section id="add-remedy">
+      <h2>Add a New Remedy</h2>
+      <form id="remedyForm" autocomplete="off">
+        <input type="text" id="name" placeholder="Name" required /><br />
+        <input type="text" id="type" placeholder="Type" required /><br />
+        <textarea id="description" placeholder="Description" required></textarea><br />
+        <input type="number" id="years" placeholder="Years Used" min="0" required /><br />
+        <button type="submit">Add Remedy</button>
+      </form>
+    </section>
 
-<!-- Usage Stats Section -->
-<section id="stats">
-  <h2 style="display:flex;justify-content:space-between;align-items:center;">
-    <span>Usage Stats</span>
-    <button id="refreshStats" type="button">Refresh Stats</button>
-  </h2>
+    <section id="stats">
+      <h2 style="display:flex;justify-content:space-between;align-items:center;">
+        <span>Usage Stats</span>
+        <button id="refreshStats" type="button">Refresh Stats</button>
+      </h2>
+      <div id="stats-cards"></div>
+      <canvas id="symptomChart" width="400" height="220"></canvas>
+    </section>
 
-  <div id="stats-cards"></div>
-  <canvas id="symptomChart" width="400" height="220"></canvas>
-</section>
+    <section id="herbs">
+      <h2>Herbal Remedies</h2>
+      <ul>
+        <li><strong>Turmeric:</strong> Anti-inflammatory and antioxidant properties.</li>
+        <li><strong>Ginger:</strong> Helps with digestion and nausea.</li>
+        <li><strong>Mullein:</strong> Helps with respiratory issues.</li>
+        <li><strong>Elderberry:</strong> Boosts immune system, helps with cold &amp; flu symptoms.</li>
+      </ul>
+    </section>
 
-
-<!-- Herbs Section -->
-<section id="herbs">
-  <h2>Herbal Remedies</h2>
-  <ul>
-    <li><strong>Turmeric:</strong> Anti-inflammatory and antioxidant properties.</li>
-    <li><strong>Ginger:</strong> Helps with digestion and nausea.</li>
-    <li><strong>Mullein:</strong> Helps with respiratory issues.</li>
-    <li><strong>Elderberry:</strong> Boosts immune system, helps with cold & flu symptoms.</li>
-  </ul>
-</section>
-
-
-    <!-- Symptoms Section -->
     <section id="symptoms">
-  <h2>Common Symptoms</h2>
-  <p>Click a symptom to see suggested natural remedies:</p>
+      <h2>Common Symptoms</h2>
+      <p>Click a symptom to see suggested natural remedies:</p>
+      <button class="symptom-btn" data-symptom="Headache">Headache</button>
+      <button class="symptom-btn" data-symptom="Cold">Cold</button>
+      <button class="symptom-btn" data-symptom="Digestive Issues">Digestive Issues</button>
+      <p id="remedyResult"></p>
+    </section>
 
-  <button class="symptom-btn" data-symptom="Headache">Headache</button>
-  <button class="symptom-btn" data-symptom="Cold">Cold</button>
-  <button class="symptom-btn" data-symptom="Digestive Issues">Digestive Issues</button>
-
-  <!-- Where text results appear -->
-  <p id="remedyResult"></p>
-  </section>
-
-    <!-- Digestive Info -->
     <section id="digestive-info" class="hidden">
       <h2>Digestive Remedies</h2>
       <p><strong>Ginger:</strong> Known for reducing nausea, improving digestion, and soothing the stomach.</p>
@@ -85,10 +73,9 @@
       <p>These remedies are commonly used for digestive discomfort, bloating, or indigestion.</p>
     </section>
 
-    <!-- Digestive Remedies -->
     <section id="digestive-remedies">
       <article class="remedy-category">
-        <h3>Carminative Herbs (Reduce Gas & Bloating)</h3>
+        <h3>Carminative Herbs (Reduce Gas &amp; Bloating)</h3>
         <ul>
           <li><strong>Peppermint</strong> — Eases IBS, gas, and nausea.</li>
           <li><strong>Fennel</strong> — Reduces gas and cramps.</li>
@@ -97,7 +84,7 @@
         </ul>
       </article>
       <article class="remedy-category">
-        <h3>Bitter Herbs (Stimulate Digestion & Bile)</h3>
+        <h3>Bitter Herbs (Stimulate Digestion &amp; Bile)</h3>
         <ul>
           <li><strong>Dandelion Root</strong> — Encourages bile flow.</li>
           <li><strong>Gentian Root</strong> — Boosts enzyme production.</li>
@@ -107,7 +94,6 @@
       </article>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact">
       <h2>Contact Us</h2>
       <form>
@@ -119,13 +105,9 @@
     </section>
   </main>
 
-  <footer>
-   
-  </footer>
+  <footer></footer>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script src="/script.js" defer></script>
 </body>
 </html>
-
-

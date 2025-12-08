@@ -22,14 +22,14 @@ function showRemedy(symptom) {
   }
 }
 
-// Listen for any symptom button clicks
+
 document.addEventListener("click", (e) => {
   const btn = e.target.closest(".symptom-btn");
   if (!btn) return;
   const symptom = btn.dataset.symptom;
   showRemedy(symptom);
 
-  // fire-and-forget analytics
+  
   fetch("/api/track", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -37,7 +37,7 @@ document.addEventListener("click", (e) => {
   }).catch(() => {});
 });
 
-// Fetch remedies from API
+
 async function fetchRemedies() {
   try {
     console.log("Fetching remedies…");
@@ -55,7 +55,7 @@ async function fetchRemedies() {
   }
 }
 
-// Handle form submission to POST new remedy
+
 document.getElementById("remedyForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -79,8 +79,7 @@ document.getElementById("remedyForm").addEventListener("submit", async (e) => {
       await fetchRemedies(); // refresh list
       await loadStats();
 
-
-      // (optional) analytics for remedy added
+    
       fetch("/api/track", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -95,7 +94,7 @@ document.getElementById("remedyForm").addEventListener("submit", async (e) => {
   } catch (error) {
     console.error("Error adding remedy:", error);
   }
-}); // <-- properly close the submit handler here
+}); 
 
 
 // Display remedy cards dynamically
@@ -114,7 +113,7 @@ function displayRemedies(remedies) {
     `;
     container.appendChild(card);
 
-    // Fade-in animation
+    
     requestAnimationFrame(() => card.classList.add("show"));
   });
 }
@@ -138,15 +137,14 @@ document.getElementById("loadRemedies").addEventListener("click", async () => {
 });
 
 
-// =============================
-// 📊 Load and display site stats
-// =============================
+
+
 async function loadStats() {
   try {
     const res = await fetch("/api/stats");
     const stats = await res.json();
 
-    // Summary cards
+    
     const cards = document.getElementById("stats-cards");
     cards.innerHTML = `
       <div class="remedy-card show"><strong>Total events:</strong> ${stats.totals.events}</div>
@@ -154,7 +152,7 @@ async function loadStats() {
       <div class="remedy-card show"><strong>Remedies added:</strong> ${stats.totals.remedyAdds}</div>
     `;
 
-    // Chart data
+    
     const labels = stats.topSymptoms.map(s => s.symptom);
     const data = stats.topSymptoms.map(s => s.count);
     const ctx = document.getElementById("symptomChart").getContext("2d");
@@ -186,7 +184,7 @@ async function loadStats() {
 }
 
 
-// Call when page loads
+
 document.addEventListener("DOMContentLoaded", loadStats);
 document.getElementById("refreshStats")?.addEventListener("click", loadStats);
 

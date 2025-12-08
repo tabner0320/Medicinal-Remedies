@@ -9,7 +9,7 @@ const PORT = 3000;
 app.use(cors());
 app.use(express.json());
 
-// ✅ Serve static files from the "public" folder
+// Serve static files from the "public" folder
 app.use(express.static(path.join(__dirname, "public")));
 
 const dataPath = path.join(__dirname, "data.json");
@@ -25,13 +25,13 @@ function writeData(data) {
   fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
 }
 
-// ✅ GET ALL Remedies
+// GET ALL Remedies
 app.get("/api/remedies", (req, res) => {
   const data = readData();
   res.json(data);
 });
 
-// ✅ GET ONE Remedy by ID
+// GET ONE Remedy by ID
 app.get("/api/remedies/:id", (req, res) => {
   const data = readData();
   const remedy = data.find(r => r.id === parseInt(req.params.id));
@@ -39,7 +39,7 @@ app.get("/api/remedies/:id", (req, res) => {
   else res.status(404).json({ message: "Remedy not found" });
 });
 
-// ✅ POST NEW Remedy
+// POST NEW Remedy
 app.post("/api/remedies", (req, res) => {
   const data = readData();
   const newRemedy = req.body;
@@ -50,7 +50,7 @@ app.post("/api/remedies", (req, res) => {
 });
 
 
-// === Simple metrics store ===
+// Simple metrics store 
 const METRICS_PATH = path.join(__dirname, "metrics.json");
 
 function readMetrics() {
