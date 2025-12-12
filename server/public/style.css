@@ -194,17 +194,7 @@ form button {
   margin-top: 10px;
 }
 
-/* Slide-in for the Add Remedy panel */
-#add-remedy {
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
 
-#add-remedy.show {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 @media (prefers-reduced-motion: reduce) {
   #add-remedy {
