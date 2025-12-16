@@ -9,29 +9,29 @@ const PORT = 3000;
 app.use(cors());
 app.use(express.json());
 
-// Serve static files from the "public" folder
+
 app.use(express.static(path.join(__dirname, "public")));
 
 const dataPath = path.join(__dirname, "data.json");
 
-// READ data from data.json
+
 function readData() {
   const data = fs.readFileSync(dataPath);
   return JSON.parse(data);
 }
 
-// WRITE data to data.json
+
 function writeData(data) {
   fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
 }
 
-// GET ALL Remedies
+
 app.get("/api/remedies", (req, res) => {
   const data = readData();
   res.json(data);
 });
 
-// GET ONE Remedy by ID
+
 app.get("/api/remedies/:id", (req, res) => {
   const data = readData();
   const remedy = data.find(r => r.id === parseInt(req.params.id));
@@ -39,7 +39,7 @@ app.get("/api/remedies/:id", (req, res) => {
   else res.status(404).json({ message: "Remedy not found" });
 });
 
-// POST NEW Remedy
+
 app.post("/api/remedies", (req, res) => {
   const data = readData();
   const newRemedy = req.body;
@@ -50,7 +50,7 @@ app.post("/api/remedies", (req, res) => {
 });
 
 
-// Simple metrics store 
+
 const METRICS_PATH = path.join(__dirname, "metrics.json");
 
 function readMetrics() {
@@ -65,7 +65,7 @@ function writeMetrics(data) {
   fs.writeFileSync(METRICS_PATH, JSON.stringify(data, null, 2));
 }
 
-// Track events (clicks, submissions, pageviews)
+
 app.post("/api/track", (req, res) => {
   const { event, payload } = req.body || {};
   if (!event) return res.status(400).json({ message: "Missing event name" });
@@ -80,7 +80,7 @@ app.post("/api/track", (req, res) => {
   res.json({ ok: true });
 });
 
-// Aggregate stats
+
 app.get("/api/stats", (req, res) => {
   const { events } = readMetrics();
 
