@@ -73,3 +73,6 @@ Medicinal-Remedies/
 5. Open your browser and go to:
 
    http://localhost:3000
+
+   AI Assistance Disclosure
+Portions of this project were developed with guidance from ChatGPT (OpenAI), as well as reaching back to previous coworkers (Developers) to assist with structure, code examples, and formatting. All final code was reviewed, edited, and tested by Theophilus M. Abner Jr.
