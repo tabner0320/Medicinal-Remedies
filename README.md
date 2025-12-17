@@ -26,8 +26,8 @@ This project includes an interactive web application designed to help users expl
 - Express.js  
 - CORS and dotenv for configuration
 
-## -- Project Structure
----
+## --- Project Structure
+
 Medicinal-Remedies/
 ├── server.js
 ├── package.json
