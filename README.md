@@ -14,6 +14,12 @@ This project includes an interactive web application designed to help users expl
 -  Create a function that accepts two or more input parameters and returns a value that is calculated or    determined by the inputs.  Basic math functions don’t count (e.g. addition, etc). 
 -  Visualize data in a user friendly way. (e.g. graph, chart, etc) This can include using libraries like ChartJS 
 
+### Responsive Design
+- Mobile-first layout with a desktop breakpoint at **768px**.
+- On smaller screens, content stacks vertically for readability.
+- On larger screens, the remedies section switches to a **two-column grid** for improved layout.
+
+
 ## -- Technologies Used
 
 -- Frontend:  
