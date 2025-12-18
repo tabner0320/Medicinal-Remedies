@@ -85,7 +85,6 @@ AI Assistance Disclosure
    http://localhost:3000
 
    AI Assistance Disclosure
-Portions of this project were developed with guidance from ChatGPT (OpenAI), as well as reaching back to previous coworkers (Developers) to assist with structure, code examples, and formatting. All final code was reviewed, edited, and tested by Theophilus M. Abner Jr.
-=======
+   
 Portions of this project were developed with guidance from ChatGPT (OpenAI) and consultation with previous coworkers (developers) to assist with structure, code examples, and formatting. All final code was reviewed, edited, and tested by Theophilus M. Abner Jr..
->>>>>>> Stashed changes
+
