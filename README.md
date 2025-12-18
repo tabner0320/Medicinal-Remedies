@@ -77,13 +77,6 @@ node server/server.js
 5. Open in your browser
 http://localhost:3000
 
-AI Assistance Disclosure
-
-<<<<<<< Updated upstream
-5. Open your browser and go to:
-
-   http://localhost:3000
-
    AI Assistance Disclosure
    
 Portions of this project were developed with guidance from ChatGPT (OpenAI) and consultation with previous coworkers (developers) to assist with structure, code examples, and formatting. All final code was reviewed, edited, and tested by Theophilus M. Abner Jr..
