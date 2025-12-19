@@ -30,8 +30,7 @@ On smaller screens, content stacks vertically for readability
 
 On larger screens, the remedies section switches to a two-column grid
 
-Technologies Used
-Frontend
+Technologies Used Frontend
 
 HTML5
 
@@ -47,37 +46,22 @@ Express.js
 
 CORS and dotenv for configuration
 
-Project Structure
-Medicinal-Remedies/
-├── server/
-│   ├── server.js
-│   ├── package.json
-│   ├── data.json
-│   └── public/
-│       ├── index.html
-│       ├── style.css
-│       ├── script.js
-│       └── images/
-│           └── profile.jpg
-└── README.md
+Project Structure Medicinal-Remedies/ ├── server/ │ ├── server.js │ ├── package.json │ ├── data.json │ └── public/ │ ├── index.html │ ├── style.css │ ├── script.js │ └── images/ │ └── profile.jpg └── README.md
 
 Setup Instructions
-1. Clone the repository
-git clone https://github.com/tabner0320/Medicinal-Remedies.git
 
-2. Navigate to the project directory
-cd Medicinal-Remedies/server
+Clone the repository git clone https://github.com/tabner0320/Medicinal-Remedies.git
 
-3. Install dependencies
-npm install
+Navigate to the project directory cd Medicinal-Remedies/server
 
-4. Start the server
-node server/server.js
+Install dependencies npm install
 
-5. Open in your browser
-http://localhost:3000
+Start the server node server/server.js
 
-   AI Assistance Disclosure
+Open in your browser http://localhost:3000
+
+AI Assistance Disclosure
+
    
 Portions of this project were developed with guidance from ChatGPT (OpenAI) and consultation with previous coworkers (developers) to assist with structure, code examples, and formatting. All final code was reviewed, edited, and tested by Theophilus M. Abner Jr..
 
