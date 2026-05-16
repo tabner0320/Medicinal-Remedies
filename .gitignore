@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 node_modules/
 npm-debug.log
 .env
 server/metrics.json
+=======
+bin/
+obj/
+>>>>>>> 6061d5e (Initial Medicinal Remedies final project)

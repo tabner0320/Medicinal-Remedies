@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="MedicinalRemedies.Api/MedicinalRemedies.Api.csproj" />
+  <Project Path="MedicinalRemedies.Console/MedicinalRemedies.Console.csproj" />
+  <Project Path="MedicinalRemedies.Tests/MedicinalRemedies.Tests.csproj" />
+</Solution>
