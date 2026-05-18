@@ -1,86 +1,85 @@
-Medicinal Remedies
+# Medicinal Remedies
 
-This project is an interactive web application designed to help users explore natural remedies for common symptoms such as headaches, colds, and digestive issues. It demonstrates my understanding of front-end web development, responsive design, and a Node.js/Express server setup.
+Medicinal Remedies is a full-stack project that helps users explore natural remedies for common symptoms such as headaches, colds, and digestive issues.
 
-Features
-
-Symptom-based remedy suggestions
-
-Dynamic content updates using JavaScript
-
-Responsive design for both mobile and desktop views
-
-Organized project structure with static file serving via Express
-
-Clean, accessible, and semantic HTML markup
-
-Data analysis using arrays, objects, sets, or maps
-
-Regular expression validation to prevent invalid user input
-
-Custom functions that accept multiple parameters and return calculated values
-
-User-friendly data visualization using charts (Chart.js)
-
-Responsive Design
-
-Mobile-first layout with a desktop breakpoint at 768px
-
-On smaller screens, content stacks vertically for readability
-
-On larger screens, the remedies section switches to a two-column grid
-
-Technologies Used Frontend
-
-HTML5
-
-CSS3 (Flexbox, Grid, Media Queries)
-
-Vanilla JavaScript (DOM manipulation, event handling)
-
-Backend
-
-Node.js
-
-Express.js
-
-CORS and dotenv for configuration
-
-Project Structure Medicinal-Remedies/ ├── server/ │ ├── server.js │ ├── package.json │ ├── data.json │ └── public/ │ ├── index.html │ ├── style.css │ ├── script.js │ └── images/ │ └── profile.jpg └── README.md
-
-Setup Instructions
-
-Clone the repository git clone https://github.com/tabner0320/Medicinal-Remedies.git
-
-Navigate to the project directory cd Medicinal-Remedies/server
-
-Install dependencies npm install
-
-Start the server node server/server.js
-
-Open in your browser http://localhost:3000
-
-## C# API and Async Console Application
-
-This repository also includes a multi-project .NET solution that demonstrates:
-
-- ASP.NET Core Minimal API development
-- Async programming with `async` and `await`
-- API consumption using `HttpClient`
-- JSON serialization and deserialization
+The project demonstrates:
+- Responsive web development
+- REST API development with ASP.NET Core
+- Async programming with `HttpClient`
+- JSON serialization/deserialization
+- Node.js and Express server setup
 - Console application development
-- Automated testing structure with a dedicated test project
 
-### .NET Solution Structure
+---
+
+## Features
+
+- Symptom-based remedy suggestions
+- Responsive mobile-friendly layout
+- Dynamic content using JavaScript
+- ASP.NET Core Minimal API
+- Async console application using `HttpClient`
+- JSON API endpoints
+- Data visualization with Chart.js
+- Input validation using regular expressions
+
+---
+
+## Technologies Used
+
+### Frontend
+- HTML5
+- CSS3
+- JavaScript
+- Chart.js
+
+### Backend
+- Node.js
+- Express.js
+- ASP.NET Core
+- C#
+- HttpClient
+
+### Tools
+- Git & GitHub
+- VS Code
+- .NET CLI
+
+---
+
+## Project Structure
 
 ```text
-MedicinalRemedies.Api/
-MedicinalRemedies.Console/
-MedicinalRemedies.Tests/
-MedicinalRemedies.slnx
+Medicinal-Remedies/
+│
+├── MedicinalRemedies.Api/
+├── MedicinalRemedies.Console/
+├── MedicinalRemedies.Tests/
+├── server/
+└── README.md
+API Endpoints
+GET /api/remedies
+GET /api/remedies/1
+GET /api/remedies/symptom/headache
+Running the ASP.NET API
+dotnet run --project MedicinalRemedies.Api --urls http://localhost:5000
+Running the Console App
 
-AI Assistance Disclosure
+Open a second terminal:
 
-   
-Portions of this project were developed with guidance from ChatGPT (OpenAI) and consultation with previous coworkers (developers) to assist with structure, code examples, and formatting. All final code was reviewed, edited, and tested by Theophilus M. Abner Jr..
+dotnet run --project MedicinalRemedies.Console
+Running the Node.js Server
+cd server
+npm install
+node server.js
 
+Open:
+
+http://localhost:3000
+What I Learned
+Building and consuming REST APIs
+Async programming with async and await
+Using HttpClient in C#
+JSON serialization and deserialization
+Responsive web development
+GitHub workflow and project organization
