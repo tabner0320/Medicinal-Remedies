@@ -60,6 +60,25 @@ Start the server node server/server.js
 
 Open in your browser http://localhost:3000
 
+## C# API and Async Console Application
+
+This repository also includes a multi-project .NET solution that demonstrates:
+
+- ASP.NET Core Minimal API development
+- Async programming with `async` and `await`
+- API consumption using `HttpClient`
+- JSON serialization and deserialization
+- Console application development
+- Automated testing structure with a dedicated test project
+
+### .NET Solution Structure
+
+```text
+MedicinalRemedies.Api/
+MedicinalRemedies.Console/
+MedicinalRemedies.Tests/
+MedicinalRemedies.slnx
+
 AI Assistance Disclosure
 
    
