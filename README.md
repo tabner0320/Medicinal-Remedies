@@ -1,4 +1,4 @@
-# Medicinal Remedies
+ Medicinal Remedies
 
 Medicinal Remedies is a full-stack project that helps users explore natural remedies for common symptoms such as headaches, colds, and digestive issues.
 
@@ -10,9 +10,7 @@ The project demonstrates:
 - Node.js and Express server setup
 - Console application development
 
----
-
-## Features
+ Features
 
 - Symptom-based remedy suggestions
 - Responsive mobile-friendly layout
@@ -23,31 +21,29 @@ The project demonstrates:
 - Data visualization with Chart.js
 - Input validation using regular expressions
 
----
+ Technologies Used
 
-## Technologies Used
-
-### Frontend
+ Frontend
 - HTML5
 - CSS3
 - JavaScript
 - Chart.js
 
-### Backend
+ Backend
 - Node.js
 - Express.js
 - ASP.NET Core
 - C#
 - HttpClient
 
-### Tools
+ Tools
 - Git & GitHub
 - VS Code
 - .NET CLI
 
 ---
 
-## Project Structure
+ Project Structure
 
 ```text
 Medicinal-Remedies/
@@ -76,10 +72,4 @@ node server.js
 Open:
 
 http://localhost:3000
-What I Learned
-Building and consuming REST APIs
-Async programming with async and await
-Using HttpClient in C#
-JSON serialization and deserialization
-Responsive web development
-GitHub workflow and project organization
+
